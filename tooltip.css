@@ -1,0 +1,82 @@
+:root {
+  --tip-triangle-height: 12px;
+  --tip-triangle-width: 20px;
+  --tooltip-background-color: #eee;
+  --tooltip-top-offset: 0px;
+  --tooltip-left-offset: 0px;
+}
+
+body {
+  margin: 0;
+  margin-top: 5rem;
+  font-family: sans-serif;
+  line-height: 1.4;
+}
+
+.container {
+  position: relative;
+  padding: 3rem calc(50% - 20rem);
+}
+
+/*** CREATE ADDITIONAL STYLES HERE ***/
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+#tooltip-template {
+  background: var(--tooltip-background-color);
+  position: absolute;
+  z-index: 999;
+  padding: 1rem;
+  min-width: 20rem;
+  color: #000;
+  top: calc(var(--tooltip-top-offset) + 30px);
+  left: var(--tooltip-left-offset);
+}
+
+.tooltip {
+  min-height: 7rem;
+  display: grid;
+  grid-template-rows: 1.1rem auto 2rem;
+  margin: inherit;
+}
+
+.tooltip-title {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.tooltip-description {
+  margin: 0;
+  align-self: center;
+}
+
+.tooltip-button {
+  margin: 0;
+  background: #fff;
+  padding: 0.2rem 0.75rem;
+  border-width: 1px;
+  border-radius: 0.5rem;
+}
+
+/* align btn to right. default is stretch */
+aside.tooltip-bottom-right .tooltip-button {
+  justify-self: end;
+}
+
+#tooltip-template:before {
+  content: "";
+  /* display: block; */
+  width: 0;
+  height: 0;
+  position: absolute;
+
+  border-left: var(--tip-triangle-width) solid transparent;
+  border-right: var(--tip-triangle-width) solid transparent;
+  border-bottom: var(--tip-triangle-height) solid var(--tooltip-background-color);
+  left: -1px;
+  top: -12px;
+}

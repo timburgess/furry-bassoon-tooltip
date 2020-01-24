@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tooltip example</title>
+    <link rel="stylesheet" href="tooltip.css">
+  </head>
+  <body>
+    <!-- <div hidden id="tooltip-template"> -->
+    <div hidden id="tooltip-template">
+      <aside class="tooltip tooltip-bottom-right">
+        <h5 class="tooltip-title">First tooltip</h5>
+        <p class="tooltip-description">Click away to dismiss.</p>
+        <button type="button" class="tooltip-button">OK</button>
+      </aside>
+    </div>
+    <main class="container">
+      <h4>Tooltip example</h4>
+      <p>
+        Clicking <a href="#" id="link1">this link </a> should pop up a tooltip
+        below it. Click anywhere outside it to dismiss. If you click
+        <a href="#" id="link2">this link</a> then a popup with a longer message
+        should appear. Finally, if you click <a href="#" id="link3">this link</a>
+        then click the button in the tooltip, it will trigger an alert.
+      </p>
+    </main>
+    <script type="text/javascript" src="tooltip.js"></script>
+  </body>
+</html>
