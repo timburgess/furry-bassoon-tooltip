@@ -1,26 +1,35 @@
 function spawnTooltip(elem, options) {
-  /*** IMPLEMENT THIS FUNCTION ***/
+
+  const { title, description, onApprove } = options
+
+  let titleElem = document.getElementsByClassName('tooltip-title')[0]
+  titleElem && (titleElem.textContent = title || '')
+
+  let descElem = document.getElementsByClassName('tooltip-description')[0]
+  descElem && (descElem.textContent = description || '')
+
+  let btnElem = document.getElementsByClassName('tooltip-button')[0]
+  btnElem && (btnElem.onclick = onApprove)
+
+  let tooltip = document.getElementById('tooltip-template')
+  if (!tooltip) return
   
-  console.log('elem', elem)
-  let tooltip = document.getElementById('tooltip-template').toggleAttribute('hidden')
-  // tooltip.toggleAttribute('hidden')
-  
+  tooltip.removeAttribute('hidden')
+
   let rect = elem.getBoundingClientRect()
   const offset = {
     top: rect.top + window.scrollY,
     left: rect.left + window.scrollX,
   }
-  
-  console.log(offset)
-  let root = document.documentElement
 
+  let root = document.documentElement
   root.style.setProperty('--tooltip-top-offset', offset.top + 'px')
   root.style.setProperty('--tooltip-left-offset', offset.left + 'px')
-
 }
 
 // Manage creation and destruction of tooltip elements
 document.documentElement.addEventListener('click', function(event) {
+
   // Remove all existing tooltip elements unless the thing that was clicked on
   // was itself a tooltip element.
   if (!event.target.matches('.tooltip, .tooltip *')) {
@@ -56,5 +65,9 @@ document.documentElement.addEventListener('click', function(event) {
         },
       })
       break
+    default:
+      if (!event.target.closest('#tooltip-template')) {
+        document.getElementById('tooltip-template').setAttribute('hidden', '')
+      }
   }
 })

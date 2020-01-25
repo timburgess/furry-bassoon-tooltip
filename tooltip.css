@@ -31,7 +31,7 @@ body {
   position: absolute;
   z-index: 999;
   padding: 1rem;
-  min-width: 20rem;
+  min-width: 17rem;
   color: #000;
   top: calc(var(--tooltip-top-offset) + 30px);
   left: var(--tooltip-left-offset);
@@ -69,7 +69,6 @@ aside.tooltip-bottom-right .tooltip-button {
 
 #tooltip-template:before {
   content: "";
-  /* display: block; */
   width: 0;
   height: 0;
   position: absolute;
